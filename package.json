@@ -4,12 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "ts-node ./src/index.ts",
-    "dev:watch": "ts-node-dev --respawn src/index.ts",
+    "dev": "ts-node ./src/server.ts",
+    "dev:watch": "ts-node-dev --respawn src/server.ts",
     "clean": "rimraf dist/*",
     "tsc": "tsc",
-    "build": "npm-run-all clean tsc",
-    "start": "node ."
+    "buildtsc": "npm-run-all clean tsc",
+    "startnode": "node .",
+    "build": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
+    "start": "node dist/js/server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,21 +25,35 @@
   },
   "homepage": "https://github.com/fhiro/node",
   "devDependencies": {
+    "@types/jest": "^26.0.4",
     "@typescript-eslint/eslint-plugin": "^3.6.0",
     "@typescript-eslint/parser": "^3.6.0",
+    "awesome-typescript-loader": "^5.2.1",
     "eslint": "^7.4.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
+    "jest": "^26.1.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
+    "source-map-loader": "^1.0.1",
+    "ts-jest": "^26.1.1",
+    "ts-loader": "^8.0.0",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.51",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@types/node": "^14.0.22"
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.22",
+    "@types/react": "^16.9.42",
+    "@types/react-dom": "^16.9.8",
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
